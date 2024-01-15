@@ -1,0 +1,17 @@
+#Use a SELECT statement to order the items by price.
+SELECT *
+FROM superstore
+ORDER BY price desc;
+
+#Show a statistic about the item prices.
+SELECT AVG (price)
+FROM superstore;
+
+#Show a statistic about the price for items in the category of "Kitchen Supplies". 
+SELECT COUNT (price)
+FROM superstore
+WHERE category='Kitchen Supplies';
+
+#Ask a question about the data.
+SELECT COUNT (item_id)
+FROM superstore;
