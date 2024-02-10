@@ -1,0 +1,32 @@
+SELECT *
+FROM fortune_companies;
+
+# Categorize the PTO allowance of the companies as "High PTO Allowance," "Average PTO Allowance," and "Little PTO Allowance"
+SELECT company_name,
+CASE WHEN paid_time_off_days >=20 THEN "High PTO Allowance"
+WHEN paid_time_off_days >=16 THEN "Average PTO Allowance"
+ELSE "Little PTO Allowance"
+END as PTO_allowance_amount
+FROM fortune_companies;
+
+#Determine which industries have more than 200,000 employees
+SELECT industry, ROUND(AVG(employees), 1) AS avg_employees
+FROM fortune_companies
+GROUP BY industry
+HAVING employees>=200000;
+
+#Determine which companies offer healthcare benefits and average employee tenure is at least 6 years
+SELECT company_name
+FROM fortune_companies
+WHERE healthcare_benefits=1
+AND avg_employee_tenure>=6.0;
+
+#What is the average paid time off days for employees in the technology industry?
+SELECT ROUND(AVG(paid_time_off_days),2) AS technology_average_PTO
+FROM fortune_companies
+WHERE industry='Technology';
+
+#How many of the companies offer healthcare benefits?
+SELECT COUNT(*)
+FROM fortune_companies
+WHERE healthcare_benefits=1;
